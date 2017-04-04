@@ -16,13 +16,15 @@ object ScalaJSExample {
     val ctx = canvas.getContext("2d")
                     .asInstanceOf[dom.CanvasRenderingContext2D]
 
+    val SQUARE_SIZE = 255*2
+    
     var count = 0
     var p = Point(0, 0)
-    val corners = Seq(Point(255, 255), Point(0, 255), Point(128, 0))
+    val corners = Seq(Point(SQUARE_SIZE, SQUARE_SIZE), Point(0, SQUARE_SIZE), Point(SQUARE_SIZE/2, 0))
 
     def clear() = {
       ctx.fillStyle = "black"
-      ctx.fillRect(0, 0, 255, 255)
+      ctx.fillRect(0, 0, SQUARE_SIZE, SQUARE_SIZE)
     }
 
     def run = for (i <- 0 until 10){
@@ -30,9 +32,9 @@ object ScalaJSExample {
       count += 1
       p = (p + corners(Random.nextInt(3))) / 2
 
-      val height = 512.0 / (255 + p.y)
+      val height = 2*(SQUARE_SIZE + 1) / (SQUARE_SIZE + p.y)
       val r = (p.x * height).toInt
-      val g = ((255-p.x) * height).toInt
+      val g = ((SQUARE_SIZE-p.x) * height).toInt
       val b = p.y
       ctx.fillStyle = s"rgb($g, $r, $b)"
 
