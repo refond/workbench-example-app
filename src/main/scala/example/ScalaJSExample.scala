@@ -27,8 +27,8 @@ object ScalaJSExample {
       ctx.fillRect(0, 0, SQUARE_SIZE, SQUARE_SIZE)
     }
 
-    def run = for (i <- 0 until 10){
-      if (count % 3000 == 0) clear()
+    def run(maxLoops:Int) = for (i <- 0 until 10){
+      if (count % maxLoops == 0) clear()
       count += 1
       p = (p + corners(Random.nextInt(3))) / 2
 
@@ -41,6 +41,6 @@ object ScalaJSExample {
       ctx.fillRect(p.x, p.y, 1, 1)
     }
 
-    dom.window.setInterval(() => run, 50)
+    dom.window.setInterval(() => run(3000), 50)
   }
 }
