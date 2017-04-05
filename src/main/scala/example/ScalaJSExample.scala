@@ -55,7 +55,7 @@ object ScalaJSExample {
       val b = p.y
       ctx.fillStyle = s"rgb($g, $r, $b)"
 
-      ctx.fillRect(p.x, p.y, 1, 1)
+      ctx.fillRect(p.x, p.y, 4, 4)
     }
 
     val MAX_LOOPS = 9000
